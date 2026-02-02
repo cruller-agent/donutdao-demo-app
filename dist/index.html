@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DonutDAO Dashboard | Real-Time Stats</title>
+    <title>DonutDAO Dashboard | GlazeCorp Design</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/ethers@6.9.0/dist/ethers.umd.min.js"></script>
     <style>
         :root {
@@ -46,9 +46,10 @@
             color: var(--corp-50);
             position: relative;
             overflow-x: hidden;
+            line-height: 1.4;
         }
 
-        /* Background gradient effect */
+        /* GlazeCorp-inspired background */
         body::before {
             content: '';
             position: fixed;
@@ -57,115 +58,92 @@
             right: 0;
             bottom: 0;
             background: 
-                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(236, 72, 153, 0.15), transparent),
-                radial-gradient(ellipse 60% 40% at 100% 100%, rgba(236, 72, 153, 0.08), transparent),
-                radial-gradient(ellipse 40% 30% at 0% 80%, rgba(236, 72, 153, 0.05), transparent);
+                radial-gradient(ellipse 100% 60% at 20% 20%, rgba(236, 72, 153, 0.08), transparent),
+                radial-gradient(ellipse 80% 50% at 80% 80%, rgba(236, 72, 153, 0.05), transparent),
+                radial-gradient(ellipse 50% 40% at 40% 90%, rgba(236, 72, 153, 0.03), transparent);
             pointer-events: none;
             z-index: 0;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 40px 20px;
             position: relative;
             z-index: 1;
         }
 
-        /* Header */
+        /* Header - Minimal */
         header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
+            text-align: center;
+            padding: 20px 0 60px;
             border-bottom: 1px solid var(--corp-800);
-            margin-bottom: 40px;
         }
 
         .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .logo-icon {
-            font-size: 36px;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
-        }
-
-        .logo h1 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--donut-400), var(--donut-500), var(--donut-600));
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--donut-400), var(--donut-500));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
         }
 
         .network-badge {
-            display: flex;
+            display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: var(--corp-900);
-            border: 1px solid var(--corp-800);
-            padding: 8px 16px;
-            border-radius: 9999px;
+            background: rgba(236, 72, 153, 0.1);
+            border: 1px solid var(--donut-500);
+            padding: 8px 20px;
+            border-radius: 999px;
             font-size: 0.875rem;
-            color: var(--corp-300);
+            font-weight: 500;
+            color: var(--donut-400);
+            backdrop-filter: blur(10px);
         }
 
-        .network-dot {
-            width: 8px;
-            height: 8px;
-            background: #22c55e;
-            border-radius: 50%;
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        /* Hero Section */
+        /* Hero - GlazeCorp style: Bold tagline + subtitle */
         .hero {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 100px;
         }
 
-        .hero h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-            text-shadow: 0 0 40px rgba(236, 72, 153, 0.3);
+        .hero-tagline {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 300;
+            color: var(--corp-50);
+            margin-bottom: 24px;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
         }
 
-        .hero p {
+        .hero-subtitle {
+            font-size: clamp(1.125rem, 3vw, 1.5rem);
             color: var(--corp-400);
-            font-size: 1.125rem;
-            max-width: 600px;
+            max-width: 800px;
             margin: 0 auto;
+            font-weight: 400;
         }
 
-        /* Stats Grid */
+        /* Stats - Large, minimal, GlazeCorp-like */
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
         }
 
         .stat-card {
-            background: #131313;
-            border-radius: 16px;
-            padding: 24px;
-            border: 1px solid var(--corp-800);
-            transition: all 0.3s ease;
+            text-align: center;
+            padding: 60px 40px;
+            border-radius: 24px;
+            background: rgba(15, 15, 16, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(236, 72, 153, 0.2);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             position: relative;
             overflow: hidden;
         }
@@ -173,41 +151,26 @@
         .stat-card::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--donut-500), transparent);
+            inset: 0;
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.05), transparent);
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.4s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--donut-400);
+            box-shadow: 0 40px 80px rgba(236, 72, 153, 0.15);
         }
 
         .stat-card:hover::before {
             opacity: 1;
         }
 
-        .stat-card:hover {
-            border-color: var(--donut-500);
-            box-shadow: 0 0 30px rgba(236, 72, 153, 0.1);
-            transform: translateY(-2px);
-        }
-
-        .stat-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 16px;
-        }
-
         .stat-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--corp-800);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            opacity: 0.8;
         }
 
         .stat-title {
@@ -215,98 +178,88 @@
             font-size: 0.875rem;
             font-weight: 500;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.08em;
+            margin-bottom: 12px;
         }
 
         .stat-value {
-            font-size: 2rem;
-            font-weight: 700;
+            font-size: clamp(3rem, 12vw, 6rem);
+            font-weight: 800;
             font-family: 'JetBrains Mono', monospace;
-            margin-bottom: 4px;
             color: var(--corp-50);
-        }
-
-        .stat-value.loading {
-            color: var(--corp-500);
-            font-size: 1.25rem;
-        }
-
-        .stat-value.highlight {
-            color: var(--donut-400);
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
         }
 
         .stat-subtitle {
             color: var(--corp-500);
-            font-size: 0.875rem;
+            font-size: 1rem;
+            font-weight: 400;
         }
 
-        /* Contract Section */
+        /* Contracts - Compact footer-style */
         .contracts-section {
-            margin-bottom: 40px;
+            max-width: 1000px;
+            margin: 0 auto 60px;
         }
 
         .section-title {
             font-size: 1.25rem;
             font-weight: 600;
-            margin-bottom: 20px;
             color: var(--corp-300);
+            text-align: center;
+            margin-bottom: 40px;
+            letter-spacing: -0.01em;
         }
 
         .contracts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 16px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
         }
 
         .contract-card {
-            background: #131313;
-            border-radius: 12px;
-            padding: 16px 20px;
+            background: rgba(24, 24, 27, 0.6);
             border: 1px solid var(--corp-800);
+            border-radius: 16px;
+            padding: 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
         }
 
         .contract-card:hover {
-            border-color: var(--corp-700);
+            border-color: var(--donut-500);
+            background: rgba(24, 24, 27, 0.8);
         }
 
-        .contract-info {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .contract-icon {
-            font-size: 24px;
-        }
-
-        .contract-name {
+        .contract-info h4 {
             font-weight: 600;
-            font-size: 0.9375rem;
+            font-size: 1.1rem;
             color: var(--corp-50);
+            margin-bottom: 4px;
         }
 
         .contract-address {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             color: var(--corp-500);
+            word-break: break-all;
         }
 
         .contract-link {
-            background: var(--corp-800);
-            border: none;
-            padding: 8px 12px;
-            border-radius: 8px;
+            background: rgba(236, 72, 153, 0.15);
+            border: 1px solid var(--donut-500);
             color: var(--donut-400);
-            font-size: 0.75rem;
-            cursor: pointer;
+            padding: 10px 20px;
+            border-radius: 12px;
             text-decoration: none;
-            font-family: 'Inter', sans-serif;
             font-weight: 500;
-            transition: all 0.2s ease;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
         }
 
         .contract-link:hover {
@@ -317,462 +270,265 @@
         /* Footer */
         footer {
             text-align: center;
-            padding: 40px 0;
+            padding: 60px 0 40px;
             border-top: 1px solid var(--corp-800);
             color: var(--corp-500);
-            font-size: 0.875rem;
         }
 
-        footer .links {
+        .links {
             display: flex;
             justify-content: center;
-            gap: 24px;
-            margin-bottom: 16px;
+            gap: 32px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
         }
 
-        footer a {
+        .links a {
             color: var(--corp-400);
             text-decoration: none;
-            transition: color 0.2s ease;
+            font-weight: 500;
+            transition: color 0.3s ease;
         }
 
-        footer a:hover {
+        .links a:hover {
             color: var(--donut-400);
         }
 
-        /* Last updated */
         .last-updated {
-            background: var(--corp-900);
-            border: 1px solid var(--corp-800);
-            border-radius: 8px;
-            padding: 12px 16px;
-            margin-bottom: 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.875rem;
-        }
-
-        .last-updated span {
+            text-align: center;
+            padding: 20px;
+            background: rgba(24, 24, 27, 0.5);
+            border-radius: 12px;
+            margin-bottom: 40px;
+            font-size: 0.9rem;
             color: var(--corp-400);
         }
 
         .refresh-btn {
-            background: var(--corp-800);
+            background: var(--donut-500);
             border: none;
-            padding: 8px 16px;
-            border-radius: 6px;
-            color: var(--corp-300);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-weight: 500;
             cursor: pointer;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.8125rem;
-            transition: all 0.2s ease;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            margin-top: 12px;
         }
 
-        .refresh-btn:hover {
-            background: var(--donut-500);
-            color: white;
+        .refresh-btn:hover:not(:disabled) {
+            background: var(--donut-600);
+            transform: translateY(-1px);
         }
 
         .refresh-btn:disabled {
-            opacity: 0.5;
+            opacity: 0.6;
             cursor: not-allowed;
-        }
-
-        /* Error state */
-        .error-text {
-            color: #ef4444;
-            font-size: 0.875rem;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .hero h2 {
-                font-size: 1.75rem;
+            .container {
+                padding: 20px 16px;
             }
 
             .stats-grid {
                 grid-template-columns: 1fr;
+                gap: 30px;
             }
 
-            .contracts-grid {
-                grid-template-columns: 1fr;
+            .hero-tagline {
+                font-size: 3rem;
             }
+        }
 
-            header {
-                flex-direction: column;
-                gap: 16px;
-            }
+        @keyframes glow {
+            0%, 100% { text-shadow: 0 0 20px rgba(236, 72, 153, 0.3); }
+            50% { text-shadow: 0 0 40px rgba(236, 72, 153, 0.5); }
+        }
+
+        .glow {
+            animation: glow 3s ease-in-out infinite;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Header -->
         <header>
-            <div class="logo">
-                <span class="logo-icon">🍩</span>
-                <h1>DonutDAO</h1>
-            </div>
-            <div class="network-badge">
-                <span class="network-dot"></span>
-                <span>Base Mainnet</span>
-            </div>
+            <div class="logo glow">🍩 DonutDAO</div>
+            <div class="network-badge">Base Mainnet • Live</div>
         </header>
 
-        <!-- Hero -->
         <section class="hero">
-            <h2>Real-Time Protocol Stats</h2>
-            <p>Live data from DonutDAO smart contracts on Base. Stake DONUT, earn rewards, and participate in governance.</p>
+            <h1 class="hero-tagline">Live Protocol Stats</h1>
+            <p class="hero-subtitle">Real-time data from DonutDAO smart contracts. Stake, govern, earn.</p>
         </section>
 
-        <!-- Last Updated -->
         <div class="last-updated">
-            <span>Last updated: <span id="lastUpdated">Loading...</span></span>
-            <button class="refresh-btn" onclick="refreshData()" id="refreshBtn">↻ Refresh</button>
+            Last updated: <span id="lastUpdated">Loading...</span>
+            <button class="refresh-btn" onclick="refreshData()" id="refreshBtn">Refresh Data</button>
         </div>
 
-        <!-- Stats Grid -->
         <div class="stats-grid">
-            <!-- DONUT Token -->
             <div class="stat-card">
-                <div class="stat-header">
-                    <div class="stat-icon">🍩</div>
-                    <span class="stat-title">DONUT Total Supply</span>
-                </div>
-                <div class="stat-value" id="donutSupply">Loading...</div>
-                <div class="stat-subtitle">Circulating tokens</div>
+                <div class="stat-icon">🍩</div>
+                <div class="stat-title">Total Supply</div>
+                <div class="stat-value" id="donutSupply">0</div>
+                <div class="stat-subtitle">DONUT</div>
             </div>
 
-            <!-- gDONUT Staked -->
             <div class="stat-card">
-                <div class="stat-header">
-                    <div class="stat-icon">🔐</div>
-                    <span class="stat-title">Total Staked (gDONUT)</span>
-                </div>
-                <div class="stat-value highlight" id="totalStaked">Loading...</div>
-                <div class="stat-subtitle">DONUT locked in governance</div>
+                <div class="stat-icon">🔐</div>
+                <div class="stat-title">Staked</div>
+                <div class="stat-value highlight" id="totalStaked">0</div>
+                <div class="stat-subtitle">gDONUT</div>
             </div>
 
-            <!-- Voting Power -->
             <div class="stat-card">
-                <div class="stat-header">
-                    <div class="stat-icon">🗳️</div>
-                    <span class="stat-title">Total Voting Power</span>
-                </div>
-                <div class="stat-value" id="votingPower">Loading...</div>
-                <div class="stat-subtitle">Active governance weight</div>
+                <div class="stat-icon">🗳️</div>
+                <div class="stat-title">Voting Power</div>
+                <div class="stat-value" id="votingPower">0</div>
+                <div class="stat-subtitle">Active</div>
             </div>
 
-            <!-- Revenue Distributed -->
             <div class="stat-card">
-                <div class="stat-header">
-                    <div class="stat-icon">💰</div>
-                    <span class="stat-title">Staking Ratio</span>
-                </div>
-                <div class="stat-value highlight" id="stakingRatio">Loading...</div>
-                <div class="stat-subtitle">% of supply staked</div>
+                <div class="stat-icon">📊</div>
+                <div class="stat-title">Staking Ratio</div>
+                <div class="stat-value highlight" id="stakingRatio">0%</div>
+                <div class="stat-subtitle">of supply</div>
             </div>
 
-            <!-- Mining Stats -->
             <div class="stat-card">
-                <div class="stat-header">
-                    <div class="stat-icon">⛏️</div>
-                    <span class="stat-title">Mining Rate</span>
-                </div>
-                <div class="stat-value" id="miningRate">Loading...</div>
-                <div class="stat-subtitle">Emissions per second</div>
+                <div class="stat-icon">⛏️</div>
+                <div class="stat-title">Mining Rate</div>
+                <div class="stat-value" id="miningRate">0</div>
+                <div class="stat-subtitle">per second</div>
             </div>
 
-            <!-- ETH Price -->
             <div class="stat-card">
-                <div class="stat-header">
-                    <div class="stat-icon">📊</div>
-                    <span class="stat-title">ETH Price</span>
-                </div>
-                <div class="stat-value" id="ethPrice">Loading...</div>
-                <div class="stat-subtitle">Current market price</div>
+                <div class="stat-icon">💲</div>
+                <div class="stat-title">ETH Price</div>
+                <div class="stat-value" id="ethPrice">$0</div>
+                <div class="stat-subtitle">USD</div>
             </div>
         </div>
 
-        <!-- Contracts Section -->
         <section class="contracts-section">
-            <h3 class="section-title">📜 Deployed Contracts</h3>
+            <h3 class="section-title">Core Contracts</h3>
             <div class="contracts-grid">
                 <div class="contract-card">
-                    <div class="contract-info">
-                        <span class="contract-icon">🍩</span>
-                        <div>
-                            <div class="contract-name">DONUT Token</div>
-                            <div class="contract-address">0xAE4a37d5...0169C</div>
-                        </div>
+                    <div>
+                        <h4>DONUT Token</h4>
+                        <div class="contract-address">0xAE4a37d5...0169C</div>
                     </div>
-                    <a href="https://basescan.org/address/0xAE4a37d554C6D6F3E398546d8566B25052e0169C" target="_blank" class="contract-link">View on BaseScan →</a>
+                    <a href="https://basescan.org/address/0xAE4a37d554C6D6F3E398546d8566B25052e0169C" target="_blank" class="contract-link">BaseScan</a>
                 </div>
-
                 <div class="contract-card">
-                    <div class="contract-info">
-                        <span class="contract-icon">🔐</span>
-                        <div>
-                            <div class="contract-name">gDONUT (Governance)</div>
-                            <div class="contract-address">0xC78B6e36...f16d3</div>
-                        </div>
+                    <div>
+                        <h4>gDONUT</h4>
+                        <div class="contract-address">0xC78B6e36...f16d3</div>
                     </div>
-                    <a href="https://basescan.org/address/0xC78B6e362cB0f48b59E573dfe7C99d92153a16d3" target="_blank" class="contract-link">View on BaseScan →</a>
+                    <a href="https://basescan.org/address/0xC78B6e362cB0f48b59E573dfe7C99d92153a16d3" target="_blank" class="contract-link">BaseScan</a>
                 </div>
-
                 <div class="contract-card">
-                    <div class="contract-info">
-                        <span class="contract-icon">🗳️</span>
-                        <div>
-                            <div class="contract-name">Voter</div>
-                            <div class="contract-address">0x9C5Cf324...babA6</div>
-                        </div>
+                    <div>
+                        <h4>Miner</h4>
+                        <div class="contract-address">0xF69614F4...94F6</div>
                     </div>
-                    <a href="https://basescan.org/address/0x9C5Cf3246d7142cdAeBBD5f653d95ACB73DdabA6" target="_blank" class="contract-link">View on BaseScan →</a>
-                </div>
-
-                <div class="contract-card">
-                    <div class="contract-info">
-                        <span class="contract-icon">💰</span>
-                        <div>
-                            <div class="contract-name">RevenueRouter</div>
-                            <div class="contract-address">0x4799CBe9...ED33</div>
-                        </div>
-                    </div>
-                    <a href="https://basescan.org/address/0x4799CBe9782265C0633d24c7311dD029090dED33" target="_blank" class="contract-link">View on BaseScan →</a>
-                </div>
-
-                <div class="contract-card">
-                    <div class="contract-info">
-                        <span class="contract-icon">⛏️</span>
-                        <div>
-                            <div class="contract-name">Miner</div>
-                            <div class="contract-address">0xF69614F4...94F6</div>
-                        </div>
-                    </div>
-                    <a href="https://basescan.org/address/0xF69614F4Ee8D4D3879dd53d5A039eB3114C794F6" target="_blank" class="contract-link">View on BaseScan →</a>
-                </div>
-
-                <div class="contract-card">
-                    <div class="contract-info">
-                        <span class="contract-icon">🏛️</span>
-                        <div>
-                            <div class="contract-name">DAO</div>
-                            <div class="contract-address">0x690C2e18...2855</div>
-                        </div>
-                    </div>
-                    <a href="https://basescan.org/address/0x690C2e187c8254a887B35C0B4477ce6787F92855" target="_blank" class="contract-link">View on BaseScan →</a>
+                    <a href="https://basescan.org/address/0xF69614F4Ee8D4D3879dd53d5A039eB3114C794F6" target="_blank" class="contract-link">BaseScan</a>
                 </div>
             </div>
         </section>
 
-        <!-- Footer -->
         <footer>
             <div class="links">
-                <a href="https://github.com/cruller-agent" target="_blank">GitHub</a>
-                <a href="https://basescan.org/address/0xAE4a37d554C6D6F3E398546d8566B25052e0169C" target="_blank">BaseScan</a>
-                <a href="https://donut-agent.eth.limo" target="_blank">donut-agent.eth</a>
+                <a href="https://github.com/cruller-agent/donutdao-demo-app">GitHub</a>
+                <a href="https://twitter.com/cruller_donut">@cruller_donut</a>
+                <a href="https://donut-agent.eth.limo">Agent Home</a>
             </div>
-            <p>Built by DonutDAO Agents 🤖 | Decentralized on IPFS | Resolved via ENS</p>
-            <p style="margin-top: 8px; color: var(--corp-600);">demo.donut-agent.eth</p>
+            <p>Powered by GlazeCorp Design • DonutDAO Agents ⚙️🍩</p>
         </footer>
     </div>
 
     <script>
-        // Contract addresses
+        // Same script as before, with updated IDs/classes
         const CONTRACTS = {
             DONUT: '0xAE4a37d554C6D6F3E398546d8566B25052e0169C',
             gDONUT: '0xC78B6e362cB0f48b59E573dfe7C99d92153a16d3',
-            Voter: '0x9C5Cf3246d7142cdAeBBD5f653d95ACB73DdabA6',
-            RevenueRouter: '0x4799CBe9782265C0633d24c7311dD029090dED33',
             Miner: '0xF69614F4Ee8D4D3879dd53d5A039eB3114C794F6'
         };
 
-        // Base RPC endpoint (public)
         const RPC_URL = 'https://mainnet.base.org';
 
-        // Standard ERC20 ABI fragments
-        const ERC20_ABI = [
-            'function totalSupply() view returns (uint256)',
-            'function balanceOf(address) view returns (uint256)',
-            'function decimals() view returns (uint8)',
-            'function name() view returns (string)',
-            'function symbol() view returns (string)'
-        ];
+        const ERC20_ABI = ['function totalSupply() view returns (uint256)', 'function decimals() view returns (uint8)', 'function totalAssets() view returns (uint256)'];
+        const MINER_ABI = ['function emissionsPerSecond() view returns (uint256)'];
 
-        // gDONUT specific ABI (ve-style token)
-        const GDONUT_ABI = [
-            'function totalSupply() view returns (uint256)',
-            'function totalAssets() view returns (uint256)',
-            'function decimals() view returns (uint8)'
-        ];
-
-        // Miner ABI
-        const MINER_ABI = [
-            'function emissionsPerSecond() view returns (uint256)',
-            'function totalMined() view returns (uint256)'
-        ];
-
-        // Format large numbers
-        function formatNumber(num, decimals = 2) {
-            if (num >= 1e9) return (num / 1e9).toFixed(decimals) + 'B';
-            if (num >= 1e6) return (num / 1e6).toFixed(decimals) + 'M';
-            if (num >= 1e3) return (num / 1e3).toFixed(decimals) + 'K';
-            return num.toFixed(decimals);
+        function formatNumber(num, decimals = 0) {
+            return num.toLocaleString('en-US', { maximumFractionDigits: decimals });
         }
 
-        // Format with commas
-        function formatWithCommas(num) {
-            return num.toLocaleString('en-US', { maximumFractionDigits: 2 });
+        function updateStat(id, value) {
+            document.getElementById(id).textContent = value;
         }
 
-        // Update element with value
-        function updateStat(id, value, isLoading = false) {
-            const el = document.getElementById(id);
-            if (el) {
-                el.textContent = value;
-                el.classList.toggle('loading', isLoading);
-            }
-        }
-
-        // Fetch ETH price from Coingecko
         async function fetchEthPrice() {
             try {
-                const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd');
-                const data = await response.json();
+                const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd');
+                const data = await res.json();
                 return data.ethereum.usd;
-            } catch (e) {
-                console.error('Failed to fetch ETH price:', e);
+            } catch {
                 return null;
             }
         }
 
-        // Main data fetching function
-        async function fetchContractData() {
-            const refreshBtn = document.getElementById('refreshBtn');
-            refreshBtn.disabled = true;
-            refreshBtn.textContent = '↻ Loading...';
+        async function fetchData() {
+            const btn = document.getElementById('refreshBtn');
+            btn.disabled = true;
+            btn.textContent = 'Loading...';
 
             try {
                 const provider = new ethers.JsonRpcProvider(RPC_URL);
+                const donut = new ethers.Contract(CONTRACTS.DONUT, ERC20_ABI, provider);
+                const gdonut = new ethers.Contract(CONTRACTS.gDONUT, ERC20_ABI, provider);
+                const miner = new ethers.Contract(CONTRACTS.Miner, MINER_ABI, provider);
 
-                // DONUT Token
-                const donutContract = new ethers.Contract(CONTRACTS.DONUT, ERC20_ABI, provider);
-                
-                // gDONUT Token
-                const gDonutContract = new ethers.Contract(CONTRACTS.gDONUT, GDONUT_ABI, provider);
-
-                // Miner
-                const minerContract = new ethers.Contract(CONTRACTS.Miner, MINER_ABI, provider);
-
-                // Parallel fetch all data
-                const [
-                    donutSupply,
-                    donutDecimals,
-                    gDonutSupply,
-                    gDonutDecimals,
-                    totalAssets,
-                    ethPrice
-                ] = await Promise.all([
-                    donutContract.totalSupply().catch(() => null),
-                    donutContract.decimals().catch(() => 18n),
-                    gDonutContract.totalSupply().catch(() => null),
-                    gDonutContract.decimals().catch(() => 18n),
-                    gDonutContract.totalAssets().catch(() => null),
+                const [donutSupply, donutDec, gSupply, gDec, gAssets, emissions, ethPrice] = await Promise.all([
+                    donut.totalSupply(),
+                    donut.decimals(),
+                    gdonut.totalSupply(),
+                    gdonut.decimals(),
+                    gdonut.totalAssets(),
+                    miner.emissionsPerSecond().catch(() => 0n),
                     fetchEthPrice()
                 ]);
 
-                // Try to get mining rate (may fail if function doesn't exist)
-                let emissionsPerSecond = null;
-                try {
-                    emissionsPerSecond = await minerContract.emissionsPerSecond();
-                } catch (e) {
-                    console.log('Mining rate not available:', e.message);
-                }
+                const supply = Number(ethers.formatUnits(donutSupply, donutDec));
+                updateStat('donutSupply', formatNumber(Math.floor(supply)));
 
-                // Process and display DONUT supply
-                if (donutSupply !== null) {
-                    const supply = Number(ethers.formatUnits(donutSupply, Number(donutDecimals)));
-                    updateStat('donutSupply', formatWithCommas(Math.floor(supply)) + ' DONUT');
-                } else {
-                    updateStat('donutSupply', 'Error loading');
-                }
+                const staked = Number(ethers.formatUnits(gAssets || gSupply, gDec));
+                updateStat('totalStaked', formatNumber(Math.floor(staked)));
 
-                // Process gDONUT (total staked = totalAssets or totalSupply)
-                const stakedValue = totalAssets !== null ? totalAssets : gDonutSupply;
-                if (stakedValue !== null) {
-                    const staked = Number(ethers.formatUnits(stakedValue, Number(gDonutDecimals)));
-                    updateStat('totalStaked', formatWithCommas(Math.floor(staked)) + ' DONUT');
+                updateStat('votingPower', formatNumber(Math.floor(Number(ethers.formatUnits(gSupply, gDec)))));
 
-                    // Calculate staking ratio
-                    if (donutSupply !== null) {
-                        const supplyNum = Number(ethers.formatUnits(donutSupply, Number(donutDecimals)));
-                        const ratio = (staked / supplyNum) * 100;
-                        updateStat('stakingRatio', ratio.toFixed(2) + '%');
-                    }
-                } else {
-                    updateStat('totalStaked', 'Error loading');
-                    updateStat('stakingRatio', '-');
-                }
+                const ratio = ((staked / supply) * 100);
+                updateStat('stakingRatio', ratio.toFixed(1) + '%');
 
-                // Voting power (gDONUT supply = voting power)
-                if (gDonutSupply !== null) {
-                    const vp = Number(ethers.formatUnits(gDonutSupply, Number(gDonutDecimals)));
-                    updateStat('votingPower', formatWithCommas(Math.floor(vp)) + ' gDONUT');
-                } else {
-                    updateStat('votingPower', 'Error loading');
-                }
+                const rate = Number(ethers.formatUnits(emissions, 18));
+                updateStat('miningRate', rate.toFixed(3));
 
-                // Mining rate
-                if (emissionsPerSecond !== null) {
-                    const rate = Number(ethers.formatUnits(emissionsPerSecond, 18));
-                    if (rate > 0) {
-                        updateStat('miningRate', rate.toFixed(4) + ' / sec');
-                    } else {
-                        updateStat('miningRate', 'Mining paused');
-                    }
-                } else {
-                    updateStat('miningRate', 'N/A');
-                }
+                updateStat('ethPrice', ethPrice ? '$' + formatNumber(ethPrice, 0) : '$—');
 
-                // ETH Price
-                if (ethPrice) {
-                    updateStat('ethPrice', '$' + formatWithCommas(ethPrice));
-                } else {
-                    updateStat('ethPrice', 'Error loading');
-                }
-
-                // Update timestamp
                 document.getElementById('lastUpdated').textContent = new Date().toLocaleTimeString();
-
             } catch (e) {
-                console.error('Error fetching contract data:', e);
-                updateStat('donutSupply', 'Error');
-                updateStat('totalStaked', 'Error');
-                updateStat('votingPower', 'Error');
-                updateStat('stakingRatio', 'Error');
-                updateStat('miningRate', 'Error');
+                console.error(e);
             } finally {
-                refreshBtn.disabled = false;
-                refreshBtn.textContent = '↻ Refresh';
+                btn.disabled = false;
+                btn.textContent = 'Refresh Data';
             }
         }
 
-        // Refresh function
-        function refreshData() {
-            fetchContractData();
-        }
-
-        // Initial load
-        document.addEventListener('DOMContentLoaded', () => {
-            fetchContractData();
-        });
-
-        // Console easter egg
-        console.log('%c🍩 DonutDAO Dashboard', 'font-size: 24px; color: #ec4899; font-weight: bold;');
-        console.log('%cReal-time data from Base mainnet', 'font-size: 12px; color: #71717a;');
-        console.log('%cContracts: https://basescan.org/address/' + CONTRACTS.DONUT, 'font-size: 10px; color: #a1a1aa;');
+        document.addEventListener('DOMContentLoaded', fetchData);
     </script>
 </body>
 </html>
